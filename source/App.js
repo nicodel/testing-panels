@@ -105,7 +105,12 @@ enyo.kind({
             if (!this.$.detailsRows) {
                 console.log("Create right panel");
                 var c = this.createComponent({container: this, kind: "FittableRows", name: "detailsRows", components: [
-                    {name: "right", kind: "RightPanel", fit: true},
+//                    {name: "right", kind: "RightPanel", fit: true},
+                    {name: "right", kind: "Panels", realtimeFit: true, draggable: false, animate: false, classes: "panels enyo-border-box", components: [
+                        {kind: "App.Project.Summary"},
+                        {kind: "App.Project.Discussions.Right"},
+                        {kind: "App.Project.Files"}
+                    ]},
                     {kind: "FittableColumns", noStretch: true, classes: "onyx-toolbar onyx-toolbar-inline", components: [
                         {kind: "onyx.Grabber"},
                         {kind: "onyx.Button", name: "addButton", content: "Add", ontap: "addTap"}
@@ -117,9 +122,9 @@ enyo.kind({
 //            this.$.right.destroyComponents();
             this.$.right.setIndex(p.value);
             this.reflow();
-        };
+        }
 //        this.$.top.render();
-    },
+    }
 });
 
 enyo.kind({
@@ -135,7 +140,7 @@ enyo.kind({
         {kind: "App.Project.Files"}
     ]
 });
-enyo.kind({
+/*enyo.kind({
     name: "RightPanel",
     kind: "Panels",
     realtimeFit: true,
@@ -147,7 +152,7 @@ enyo.kind({
         {kind: "App.Project.Discussions.Right"},
         {kind: "App.Project.Files"}
     ]
-});
+});*/
 enyo.kind({
     name: "App.Project.Summary",
     kind: "FittableRows",
